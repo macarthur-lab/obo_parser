@@ -17,7 +17,8 @@ import tqdm
 import urllib
 
 from builtins import dict
-from builtins import str
+if sys.version_info > (3, 0):
+    basestring = str
 
 logging.basicConfig(format='%(asctime)s %(levelname)-8s %(message)s')
 logger = logging.getLogger(__name__)
@@ -292,8 +293,8 @@ def _open_input_stream(path):
     Return:
         iter: iterator over file handle
     """
-    if not isinstance(path, str):
-        raise ValueError("Unexpected path type: %s" % str(path))
+    if not isinstance(path, basestring):
+        raise ValueError("Unexpected path type: %s" % type(path))
 
     is_url = path.startswith("http")
     if is_url:
