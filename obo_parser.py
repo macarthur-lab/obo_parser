@@ -89,8 +89,6 @@ def parse_obo_format(lines):
     obo_records_dict = collections.OrderedDict()
     current_stanza_type = None
     current_record = None
-    all_tags = set()
-
     if logger.isEnabledFor(logging.INFO):
         lines = tqdm.tqdm(lines, unit=" lines")
 
@@ -119,7 +117,6 @@ def parse_obo_format(lines):
             current_record = collections.defaultdict(list)
             obo_records_dict[value] = current_record
 
-        all_tags.add(tag)
         if tag in ONLY_ONE_ALLOWED_PER_STANZA:
             if tag in current_record:
                 raise ValueError("More than one '%s' found in %s stanza: %s" % (
@@ -315,7 +312,7 @@ def _compute_tsv_header(obo_records):
     """
     all_tags = set()
     for record in obo_records:
-        for tag in record.keys():
+        for tag in record:
             all_tags.add(tag)
 
     header = ['id', 'name']
