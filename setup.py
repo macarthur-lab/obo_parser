@@ -42,6 +42,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'tqdm',
+        'future',
     ],
     license="MIT",
     keywords='obo, bioinformatics, parser',
