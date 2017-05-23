@@ -3,8 +3,6 @@ import os
 import sys
 import unittest
 
-from builtins import dict
-
 if sys.version_info > (3, 0):
     from io import StringIO
 else:
