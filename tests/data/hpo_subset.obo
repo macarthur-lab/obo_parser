@@ -1,0 +1,198 @@
+format-version: 1.2
+data-version: releases/2017-04-13
+saved-by: Peter Robinson, Sebastian Koehler, Sandra Doelken, Chris Mungall, Melissa Haendel, Nicole Vasilevsky, Monarch Initiative, et al.
+subsetdef: hposlim_core "Core clinical terminology"
+subsetdef: secondary_consequence "Consequence of a disorder in another organ system."
+synonymtypedef: HP:0045076 "UK spelling"
+synonymtypedef: HP:0045077 "abbreviation"
+synonymtypedef: HP:0045078 "plural form"
+synonymtypedef: layperson "layperson term"
+default-namespace: human_phenotype
+ontology: hp
+property_value: http://purl.org/dc/elements/1.1/contributor "Chris Mungall" xsd:string
+property_value: http://purl.org/dc/elements/1.1/contributor "Courtney Hum" xsd:string
+property_value: http://purl.org/dc/elements/1.1/contributor "Joie Davis" xsd:string
+property_value: http://purl.org/dc/elements/1.1/contributor "Mark Engelstad" xsd:string
+property_value: http://purl.org/dc/elements/1.1/contributor "Melissa Haendel" xsd:string
+property_value: http://purl.org/dc/elements/1.1/contributor "Nicole Vasilevsky" xsd:string
+property_value: http://purl.org/dc/elements/1.1/contributor "Sandra Doelken" xsd:string
+property_value: http://purl.org/dc/elements/1.1/creator "Peter N Robinson" xsd:string
+property_value: http://purl.org/dc/elements/1.1/creator "Sebastian Koehler" xsd:string
+property_value: http://purl.org/dc/elements/1.1/creator "The Human Phenotype Ontology Consortium" xsd:string
+property_value: http://purl.org/dc/elements/1.1/creator "The Monarch Initiative" xsd:string
+property_value: http://purl.org/dc/elements/1.1/license "see http://www.human-phenotype-ontology.org" xsd:string
+property_value: http://purl.org/dc/elements/1.1/rights "Peter Robinson, Sebastian Koehler, The Human Phenotype Ontology Consortium, and The Monarch Initiative" xsd:string
+property_value: http://purl.org/dc/elements/1.1/subject "Phenotypic abnormalities encountered in human disease" xsd:string
+owl-axioms: Prefix(owl:=<http://www.w3.org/2002/07/owl#>)\nPrefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)\nPrefix(xml:=<http://www.w3.org/XML/1998/namespace>)\nPrefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)\nPrefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)\n\n\nOntology(\nAnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> <http://purl.obolibrary.org/obo/HP_0000510> \"\")\nAnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#hasAlternativeId> <http://purl.obolibrary.org/obo/HP_0030761> \"\")\nAnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#hasOBONamespace> <http://purl.obolibrary.org/obo/HP_0030243> \"\")\nAnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#hasOBONamespace> <http://purl.obolibrary.org/obo/HP_0030370> \"\")\nAnnotationAssertion(rdfs:comment <http://purl.obolibrary.org/obo/HP_0040081> \"\")\nAnnotationAssertion(<http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> <http://purl.obolibrary.org/obo/HP_0012377> \"\"^^xsd:string)\n)
+logical-definition-view-relation: has_part
+
+[Term]
+id: HP:0000001
+name: All
+comment: Root of all terms in the Human Phenotype Ontology.
+xref: UMLS:C0444868
+
+[Term]
+id: HP:0000118
+name: Phenotypic abnormality
+def: "A phenotypic abnormality." [HPO:probinson]
+comment: This is the root of the phenotypic abnormality subontology of the HPO.
+synonym: "Organ abnormality" EXACT []
+xref: UMLS:C4021819
+is_a: HP:0000001 ! All
+
+[Term]
+id: HP:0012374
+name: Abnormality of the globe
+def: "An anomaly of the eyeball." [HPO:probinson]
+comment: This term is used to separate anomalies of the eye proper from the ocular adnexa such as the eyelid and the tear glands.
+subset: hposlim_core
+xref: UMLS:C4022923
+is_a: HP:0012372 ! Abnormal eye morphology
+created_by: peter
+creation_date: 2013-10-13T03:50:35Z
+
+[Term]
+id: HP:0012372
+name: Abnormal eye morphology
+def: "A structural anomaly of the eye." [HPO:probinson]
+synonym: "Abnormal eye morphology" EXACT layperson []
+synonym: "Abnormally shaped eye" EXACT layperson [orcid.org/0000-0001-5208-3432]
+xref: UMLS:C4022925
+is_a: HP:0000478 ! Abnormality of the eye
+created_by: peter
+creation_date: 2013-10-13T03:44:43Z
+
+[Term]
+id: HP:0004329
+name: Abnormality of the posterior segment of the globe
+comment: The posterior segment comprises the anterior hyaloid membrane and all of the optical structures behind it: the vitreous humor, retina, choroid, and optic nerve.
+synonym: "Abnormality of the posterior segment of the eye" EXACT []
+synonym: "Abnormality of the posterior segment of the eyeball" EXACT []
+xref: UMLS:C4025354
+is_a: HP:0012374 ! Abnormality of the globe
+created_by: peter
+creation_date: 2008-02-27T04:25:00Z
+
+[Term]
+id: HP:0001098
+name: Abnormality of the fundus
+xref: UMLS:C4025804
+is_a: HP:0004329 ! Abnormality of the posterior segment of the globe
+
+[Term]
+id: HP:0000478
+name: Abnormality of the eye
+def: "Any abnormality of the eye, including location, spacing, and intraocular abnormalities." [HPO:probinson]
+subset: hposlim_core
+synonym: "Abnormal eye" EXACT layperson [HPO:skoehler]
+synonym: "Abnormality of the eye" EXACT layperson []
+synonym: "Eye disease" RELATED layperson []
+xref: MSH:D005124
+xref: MSH:D005128
+xref: SNOMEDCT_US:19416009
+xref: SNOMEDCT_US:371405004
+xref: SNOMEDCT_US:371409005
+xref: UMLS:C0015393
+xref: UMLS:C0015397
+is_a: HP:0000118 ! Phenotypic abnormality
+
+[Term]
+id: HP:0000479
+name: Abnormality of the retina
+def: "An abnormality of the retina." [HPO:probinson]
+subset: hposlim_core
+synonym: "Abnormal retina" EXACT [HPO:skoehler]
+synonym: "Anomaly of the retina" EXACT []
+synonym: "Retinal disease" RELATED []
+xref: MSH:D012164
+xref: SNOMEDCT_US:29555009
+xref: UMLS:C0035300
+xref: UMLS:C0035309
+is_a: HP:0001098 ! Abnormality of the fundus
+
+[Term]
+id: HP:0000480
+name: Retinal coloboma
+def: "A notch or cleft of the retina." [HPO:probinson]
+subset: hposlim_core
+xref: SNOMEDCT_US:39302008
+xref: UMLS:C0240896
+is_a: HP:0000479 ! Abnormality of the retina
+is_a: HP:0000589 ! Coloboma
+
+[Term]
+id: HP:0000589
+name: Coloboma
+alt_id: HP:0007767
+alt_id: HP:0007995
+def: "A developmental defect characterized by a cleft of some portion of the eye or ocular adnexa." [HPO:probinson]
+synonym: "Ocular coloboma" EXACT []
+synonym: "Ocular colobomas" EXACT []
+xref: MSH:D003103
+xref: SNOMEDCT_US:92828000
+xref: SNOMEDCT_US:93390002
+xref: UMLS:C0009363
+is_a: HP:0000315 ! Abnormality of the orbital region
+
+[Term]
+id: HP:0000315
+name: Abnormality of the orbital region
+alt_id: HP:0000284
+synonym: "Abnormality of the eye region" EXACT layperson [orcid.org/0000-0001-5889-4463]
+synonym: "Abnormality of the region around the eyes" EXACT layperson [orcid.org/0000-0001-5889-4463]
+synonym: "Anomaly of the orbital region of the face" NARROW [orcid.org/0000-0001-5889-4463]
+synonym: "Deformity of the orbital region of the face" NARROW [orcid.org/0000-0001-5889-4463]
+synonym: "Malformation of the orbital region of the face" NARROW [orcid.org/0000-0001-5889-4463]
+xref: UMLS:C4025863
+is_a: HP:0000271 ! Abnormality of the face
+
+[Term]
+id: HP:0000271
+name: Abnormality of the face
+def: "An abnormality of the face." [HPO:probinson]
+subset: hposlim_core
+synonym: "Abnormal face" EXACT layperson [HPO:skoehler]
+synonym: "Abnormality of the countenance" BROAD [orcid.org/0000-0001-5889-4463]
+synonym: "Abnormality of the face" EXACT layperson []
+synonym: "Abnormality of the physiognomy" BROAD [orcid.org/0000-0001-5889-4463]
+synonym: "Abnormality of the visage" BROAD [orcid.org/0000-0001-5889-4463]
+synonym: "Anomaly of face" RELATED [orcid.org/0000-0001-5889-4463]
+synonym: "Anomaly of the face" RELATED [orcid.org/0000-0001-5889-4463]
+synonym: "Disorder of face" BROAD layperson [orcid.org/0000-0001-5889-4463]
+synonym: "Disorder of the face" NARROW layperson [orcid.org/0000-0001-5889-4463]
+synonym: "Facial abnormality" EXACT layperson [orcid.org/0000-0001-5889-4463]
+synonym: "Facial anomaly" RELATED [orcid.org/0000-0001-5889-4463]
+xref: SNOMEDCT_US:118930001
+xref: SNOMEDCT_US:32003007
+xref: SNOMEDCT_US:398206004
+xref: SNOMEDCT_US:398302004
+xref: UMLS:C0266617
+xref: UMLS:C1290857
+xref: UMLS:C4025871
+is_a: HP:0000234 ! Abnormality of the head
+
+[Term]
+id: HP:0000234
+name: Abnormality of the head
+def: "An abnormality of the head." [HPO:probinson]
+synonym: "Abnormal head" EXACT layperson [HPO:skoehler]
+synonym: "Abnormality of the head" EXACT layperson []
+synonym: "Head abnormality" EXACT layperson []
+xref: UMLS:C4021812
+is_a: HP:0000152 ! Abnormality of head or neck
+
+[Term]
+id: HP:0000152
+name: Abnormality of head or neck
+def: "An abnormality of head and neck." [HPO:probinson]
+synonym: "Abnormality of head or neck" EXACT layperson []
+synonym: "Head and neck abnormality" EXACT layperson []
+xref: UMLS:C4021817
+is_a: HP:0000118 ! Phenotypic abnormality
+
+[Term]
+id: HP:0007808
+name: Bilateral retinal coloboma
+xref: UMLS:C4024797
+is_a: HP:0000480 ! Retinal coloboma
