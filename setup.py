@@ -38,8 +38,8 @@ setup(
     long_description=long_description,
     author='Ben Weisburd',
     author_email='weisburd@broadinstitute.org',
-    url='https://github.com/macarthur-lab/igv_utils',
-    py_modules=['igv_api'],
+    url='https://github.com/macarthur-lab/obo_parser',
+    py_modules=['obo_parser'],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
