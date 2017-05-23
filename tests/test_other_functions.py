@@ -1,8 +1,14 @@
 import logging
-import StringIO
 import os
+import sys
 import unittest
 
+from builtins import dict
+
+if sys.version_info > (3, 0):
+    from io import StringIO
+else:
+    from StringIO import StringIO
 
 
 from obo_parser import _open_input_stream, parse_obo_format, _compute_tsv_header, \
@@ -24,7 +30,7 @@ class ParserTests(unittest.TestCase):
     def test_compute_tsv_header(self):
         self.assertListEqual(_compute_tsv_header([]), ['id', 'name'])
 
-        self.assertListEqual(_compute_tsv_header(self.obo_records_dict.itervalues()), [
+        self.assertListEqual(_compute_tsv_header(self.obo_records_dict.values()), [
             'id', 'name', 'alt_id', 'comment', 'created_by', 'creation_date', 'def', 'is_a',
             'subset', 'synonym', 'xref'
         ])
@@ -59,14 +65,14 @@ class ParserTests(unittest.TestCase):
 
     def test_compute_tsv_header(self):
         self.assertListEqual(_compute_tsv_header([]), ['id', 'name'])
-        self.assertListEqual(_compute_tsv_header(self.obo_records_dict.itervalues()), [
+        self.assertListEqual(_compute_tsv_header(self.obo_records_dict.values()), [
             'id', 'name', 'alt_id', 'children',
             'comment', 'created_by', 'creation_date', 'def', 'is_a', 'subset', 'synonym', 'xref'
         ])
 
         compute_category_column(self.obo_records_dict, root_id='HP:0000118')
 
-        self.assertListEqual(_compute_tsv_header(self.obo_records_dict.itervalues()), [
+        self.assertListEqual(_compute_tsv_header(self.obo_records_dict.values()), [
             'id', 'name', 'alt_id', 'category_id', 'category_name', 'children',
             'comment', 'created_by', 'creation_date', 'def', 'is_a', 'subset', 'synonym', 'xref'
         ])
@@ -103,10 +109,10 @@ class ParserTests(unittest.TestCase):
             self.assertEqual(root_id, computed_root_id)
 
     def test_confirm_id_is_valid(self):
-        self.assertRaises(lambda: _confirm_id_is_valid('HP:000ABC', self.obo_records_dict))
+        self.assertRaises(ValueError, lambda: _confirm_id_is_valid('HP:000ABC', self.obo_records_dict))
 
     def test_write_tsv(self):
-        output_stream = StringIO.StringIO()
+        output_stream = StringIO()
 
         write_tsv(self.obo_records_dict, output_stream, root_id="HP:0000480")
 

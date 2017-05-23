@@ -16,6 +16,9 @@ import sys
 import tqdm
 import urllib
 
+from builtins import dict
+from builtins import str
+
 logging.basicConfig(format='%(asctime)s %(levelname)-8s %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -173,7 +176,7 @@ def _compute_root_id(obo_records_dict):
         return None
 
     # start with a random id and walk up the heirarchy to find a term that doesn't have a parent
-    term_id = obo_records_dict.iterkeys().next()
+    term_id = next(iter(obo_records_dict))
     while True:
         parent_ids = obo_records_dict[term_id].get("is_a")
         if parent_ids is None or len(parent_ids) == 0:
@@ -289,7 +292,7 @@ def _open_input_stream(path):
     Return:
         iter: iterator over file handle
     """
-    if not isinstance(path, (str, unicode)):
+    if not isinstance(path, str):
         raise ValueError("Unexpected path type: %s" % str(path))
 
     is_url = path.startswith("http")
@@ -333,7 +336,7 @@ def write_tsv(obo_records_dict, output_stream, root_id=None, separator=", "):
         separator (str): separator for concatenating multiple values in a single column
     """
 
-    header = _compute_tsv_header(obo_records_dict.itervalues())
+    header = _compute_tsv_header(obo_records_dict.values())
     output_stream.write("\t".join([RENAME_COLUMNS.get(column, column) for column in header]))
     output_stream.write("\n")
     for record in get_substree(obo_records_dict, root_id):
