@@ -103,7 +103,7 @@ def parse_obo_format(lines):
             continue
 
         # remove new-line character and any comments
-        line = line.rstrip('\n').split("!")[0]
+        line = line.strip().split("!")[0]
         if len(line) == 0:
             continue
 
