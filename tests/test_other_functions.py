@@ -3,7 +3,7 @@ import os
 import sys
 import unittest
 
-if sys.version_info > (3, 0):
+if sys.version_info >= (3, 0):
     from io import StringIO
 else:
     from StringIO import StringIO
