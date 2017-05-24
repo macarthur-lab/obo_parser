@@ -17,7 +17,7 @@ import tqdm
 import urllib
 
 from builtins import dict
-if sys.version_info > (3, 0):
+if sys.version_info >= (3, 0):
     basestring = str
 
 logging.basicConfig(format='%(asctime)s %(levelname)-8s %(message)s')
