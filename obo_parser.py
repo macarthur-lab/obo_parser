@@ -35,7 +35,7 @@ RENAME_COLUMNS = {
 }
 
 
-def convert_obo_to_tsv(input_path, output_path="-", root_id=None, add_category_column=False):
+def convert_obo_to_tsv(input_path, output_path=None, root_id=None, add_category_column=False):
     """Main entry point for parsing an .obo file and converting it to a .tsv table.
 
     Args:
@@ -47,9 +47,6 @@ def convert_obo_to_tsv(input_path, output_path="-", root_id=None, add_category_c
             which lists each term's top-level category. A top-level category is a term that's a
             direct child of the ontology's root term.
     """
-
-    if output_path is None:
-        output_path = os.path.basename(input_path).replace(".obo", "") + ".tsv"
 
     # read in data
     logger.info("Parsing %s", input_path)
@@ -69,7 +66,7 @@ def convert_obo_to_tsv(input_path, output_path="-", root_id=None, add_category_c
     # print stats and output .tsv
     print_stats(obo_records_dict, input_path)
 
-    if output_path == "-":
+    if output_path is None:
         write_tsv(obo_records_dict, output_stream=sys.stdout, root_id=root_id)
     else:
         with open(output_path, "w") as output_stream:
@@ -363,8 +360,7 @@ def _confirm_id_is_valid(term_id, obo_records_dict, label="id"):
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description="Parse an .obo file and write out a .tsv table")
-    p.add_argument("-o", "--output-path", help="output .tsv file path. Defaults to standard out.",
-        default="-")
+    p.add_argument("-o", "--output-path", help="output .tsv file path. Defaults to standard out.")
     p.add_argument("-r", "--root-id", help="If specified, ignore ontology terms that are not "
         "either descendants of the given id or have this id themselves. For example: 'HP:0000118'.")
     p.add_argument("-c", "--add-category-column", action="store_true", help="add a 'category' "
